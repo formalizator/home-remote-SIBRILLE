@@ -1,0 +1,163 @@
+# ==============================================================================
+# SIBRILLE Double Head LED Desk Lamp (NEC 0x22DD)
+# ==============================================================================
+
+input_boolean:
+  sibrille_desk_lamp_state:
+    name: "SIBRILLE Desk Lamp State"
+    icon: mdi:desk-lamp
+
+script:
+  # --- Basic Control ---
+  sibrille_lamp_power_toggle:
+    alias: "SIBRILLE: Power Toggle"
+    icon: mdi:power
+    sequence:
+      - service: remote.send_command
+        target:
+          entity_id: remote.broadlink_rm4_pro
+        data:
+          command: "b64:JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxI3EhISEhISEjcSEhISEhISEhI3EjcSNxISEjcSNxI3EgAFHg=="
+      - service: input_boolean.toggle
+        target:
+          entity_id: input_boolean.sibrille_desk_lamp_state
+
+  sibrille_lamp_sleep_timer_15m:
+    alias: "SIBRILLE: Sleep Timer 15m (Toggle)"
+    icon: mdi:timer-outline
+    sequence:
+      - service: remote.send_command
+        target:
+          entity_id: remote.broadlink_rm4_pro
+        data:
+          command: "b64:JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxI3EhISNxI3EjcSEhISEhISEhI3EhISEhISEjcSNxI3EgAFHg=="
+
+  sibrille_lamp_max_brightness:
+    alias: "SIBRILLE: Max Brightness 100%"
+    icon: mdi:brightness-7
+    sequence:
+      - service: remote.send_command
+        target:
+          entity_id: remote.broadlink_rm4_pro
+        data:
+          command: "b64:JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxI3EjcSEhISEhISEhISEhISEhISEjcSNxI3EjcSNxI3EgAFHg=="
+
+  # --- Step Adjustments ---
+  sibrille_lamp_bright_up:
+    alias: "SIBRILLE: Brightness Up"
+    icon: mdi:brightness-up
+    sequence:
+      - service: remote.send_command
+        target:
+          entity_id: remote.broadlink_rm4_pro
+        data:
+          command: "b64:JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxISEhISEhI3EjcSEhISEhISNxI3EjcSEhISEjcSNxI3EgAFHg=="
+
+  sibrille_lamp_bright_down:
+    alias: "SIBRILLE: Brightness Down"
+    icon: mdi:brightness-down
+    sequence:
+      - service: remote.send_command
+        target:
+          entity_id: remote.broadlink_rm4_pro
+        data:
+          command: "b64:JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxI3EjcSNxI3EjcSEhISEhISEhISEhISEhISEjcSNxI3EgAFHg=="
+
+  sibrille_lamp_cct_cooler:
+    alias: "SIBRILLE: CCT Cooler"
+    icon: mdi:snowflake
+    sequence:
+      - service: remote.send_command
+        target:
+          entity_id: remote.broadlink_rm4_pro
+        data:
+          command: "b64:JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxI3EjcSNxISEhISEhISEhISEhISEhISNxI3EjcSNxI3EgAFHg=="
+
+  sibrille_lamp_cct_warmer:
+    alias: "SIBRILLE: CCT Warmer"
+    icon: mdi:fire
+    sequence:
+      - service: remote.send_command
+        target:
+          entity_id: remote.broadlink_rm4_pro
+        data:
+          command: "b64:JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxI3EjcSNxI3EhISEhISEhISEhISEhISEhI3EjcSNxI3EgAFHg=="
+
+  # --- Quick Presets ---
+  sibrille_lamp_preset_daylight:
+    alias: "SIBRILLE: Preset Daylight (5/5, 5/5)"
+    icon: mdi:white-balance-sunny
+    sequence:
+      - service: remote.send_command
+        target:
+          entity_id: remote.broadlink_rm4_pro
+        data:
+          command: "b64:JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxI3EhISEhI3EjcSEhISEhISEhI3EjcSEhISEjcSNxI3EgAFHg=="
+      - service: input_boolean.turn_on
+        target:
+          entity_id: input_boolean.sibrille_desk_lamp_state
+
+  sibrille_lamp_preset_work:
+    alias: "SIBRILLE: Preset Work (4/5, 5/5)"
+    icon: mdi:laptop
+    sequence:
+      - service: remote.send_command
+        target:
+          entity_id: remote.broadlink_rm4_pro
+        data:
+          command: "b64:JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxISEjcSNxISEjcSEhISEhISNxISEhISNxISEjcSNxI3EgAFHg=="
+      - service: input_boolean.turn_on
+        target:
+          entity_id: input_boolean.sibrille_desk_lamp_state
+
+  sibrille_lamp_preset_relax:
+    alias: "SIBRILLE: Preset Relax (1/5, 4/5)"
+    icon: mdi:coffee
+    sequence:
+      - service: remote.send_command
+        target:
+          entity_id: remote.broadlink_rm4_pro
+        data:
+          command: "b64:JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxISEjcSEhISEjcSEhISEhISNxISEjcSNxISEjcSNxI3EgAFHg=="
+      - service: input_boolean.turn_on
+        target:
+          entity_id: input_boolean.sibrille_desk_lamp_state
+
+  sibrille_lamp_preset_warm_mid:
+    alias: "SIBRILLE: Preset Warm Medium (1/5, 3/5)"
+    icon: mdi:book-open-page-variant
+    sequence:
+      - service: remote.send_command
+        target:
+          entity_id: remote.broadlink_rm4_pro
+        data:
+          command: "b64:JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxISEjcSEhI3EhISEhISEhISNxISEjcSEhI3EjcSNxI3EgAFHg=="
+      - service: input_boolean.turn_on
+        target:
+          entity_id: input_boolean.sibrille_desk_lamp_state
+
+  sibrille_lamp_preset_nightlight:
+    alias: "SIBRILLE: Preset Night Light (1/5, 1/5)"
+    icon: mdi:baby-bottle-outline
+    sequence:
+      - service: remote.send_command
+        target:
+          entity_id: remote.broadlink_rm4_pro
+        data:
+          command: "b64:JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxISEhISNxI3EhISEhISEhISNxI3EhISEhI3EjcSNxI3EgAFHg=="
+      - service: input_boolean.turn_on
+        target:
+          entity_id: input_boolean.sibrille_desk_lamp_state
+
+# --- Template Light Entity for UI, HomeKit, and Voice Assistants ---
+light:
+  - platform: template
+    lights:
+      sibrille_desk_lamp:
+        friendly_name: "Sibrille Desk Lamp"
+        unique_id: "sibrille_double_head_desk_lamp"
+        value_template: "{{ is_state('input_boolean.sibrille_desk_lamp_state', 'on') }}"
+        turn_on:
+          service: script.sibrille_lamp_power_toggle
+        turn_off:
+          service: script.sibrille_lamp_power_toggle

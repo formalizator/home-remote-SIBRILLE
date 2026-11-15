@@ -2,6 +2,10 @@
 
 This repository contains the reverse-engineered infrared (IR) protocol specification, clean payload codes, and integration configurations for the **SIBRILLE Double Head LED Desk Lamp** (OEM Series: Yusing Lighting `YS-TL...` / models `MF31037`, `MF30021`).
 
+
+> [!CAUTION]
+> This IR protocol and command set were reverse-engineered and verified exclusively on a standard white light (non-RGB, CCT-adjustable) lamp model featuring a distinct black convex dome (IR receiver) on the underside directly beneath the touch buttons. These codes have not been tested on other hardware revisions, RGB variants, or lamp models; compatibility with different versions is not guaranteed.
+
 ---
 
 ## 1. Physical Layer and Transmission Parameters
@@ -13,6 +17,7 @@ The remote control operates using the standard [**NEC Infrared Transmission Prot
 * **Modulation Scheme:** Pulse Distance Modulation (PDM)
 * **Bit Transmission Order:** Least Significant Bit first (LSB-first)
 * **Frame Composition:** 32 data bits (4 octets):
+
   `Address Low (A) -> Address High (A_inv) -> Command (C) -> Command Inverted (~C)`
 
 ### Timing Durations

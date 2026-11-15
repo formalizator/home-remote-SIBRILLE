@@ -1,0 +1,38 @@
+{
+  "manufacturer": "SIBRILLE",
+  "supportedModels": [
+    "Double Head Desk Lamp",
+    "MF31037",
+    "MF30021",
+    "YS-TL23063"
+  ],
+  "supportedController": "Broadlink",
+  "commandsEncoding": "Base64",
+  "minTemperature": 2700,
+  "maxTemperature": 6500,
+  "precision": 5,
+  "operationModes": [
+    "nightlight",
+    "warm_mid",
+    "relax",
+    "work",
+    "daylight"
+  ],
+  "commands": {
+    "off": "JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxI3EhISEhISEjcSEhISEhISEhI3EjcSNxISEjcSNxI3EgAFHg==",
+    "on": "JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxI3EhISEhISEjcSEhISEhISEhI3EjcSNxISEjcSNxI3EgAFHg==",
+    "brightnessDown": "JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxI3EjcSNxI3EjcSEhISEhISEhISEhISEhISEjcSNxI3EgAFHg==",
+    "brightnessUp": "JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxISEhISEhI3EjcSEhISEhISNxI3EjcSEhISEjcSNxI3EgAFHg==",
+    "colorTemperatureDown": "JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxI3EjcSNxI3EhISEhISEhISEhISEhISEhI3EjcSNxI3EgAFHg==",
+    "colorTemperatureUp": "JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxI3EjcSNxISEhISEhISEhISEhISEhISNxI3EjcSNxI3EgAFHg==",
+    "maxBrightness": "JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxI3EjcSEhISEhISEhISEhISEhISEjcSNxI3EjcSNxI3EgAFHg==",
+    "sleepTimer15m": "JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxI3EhISNxI3EjcSEhISEhISEhI3EhISEhISEjcSNxI3EgAFHg==",
+    "modes": {
+      "nightlight": "JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxISEhISNxI3EhISEhISEhISNxI3EhISEhI3EjcSNxI3EgAFHg==",
+      "warm_mid": "JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxISEjcSEhI3EhISEhISEhISNxISEjcSEhI3EjcSNxI3EgAFHg==",
+      "relax": "JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxISEjcSEhISEjcSEhISEhISNxISEjcSNxISEjcSNxI3EgAFHg==",
+      "work": "JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxISEjcSNxISEjcSEhISEhISNxISEhISNxISEjcSNxI3EgAFHg==",
+      "daylight": "JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxI3EhISEhI3EjcSEhISEhISEhI3EjcSEhISEjcSNxI3EgAFHg=="
+    }
+  }
+}
