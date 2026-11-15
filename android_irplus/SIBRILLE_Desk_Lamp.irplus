@@ -1,0 +1,21 @@
+<irplus>
+    <device manufacturer="SIBRILLE" model="Double Head Desk Lamp" columns="3" format="WINLIRC_SPACEENC" bits="32" pre-data-bits="16" pre-data="0x44BB" header-pulse="9000" header-space="4500" one-pulse="560" one-space="1690" zero-pulse="560" zero-space="560" ptrail="560" gap="108000" carrier-frequency="38000">
+        
+        <button label="&#61457; POWER" backgroundColor="FFD32F2F">0x8877</button>
+        <button label="100% MAX">0xC03F</button>
+        <button label="&#128338; 15M">0xB847</button>
+
+        <button label="BRIGHT +">0x18E7</button>
+        <button label="DAYLIGHT">0x9867</button>
+        <button label="CCT + (COOL)">0xE01F</button>
+
+        <button label="BRIGHT -">0xF807</button>
+        <button label="WORK">0x6897</button>
+        <button label="CCT - (WARM)">0xF00F</button>
+
+        <button label="RELAX">0x48B7</button>
+        <button label="WARM MID">0x50AF</button>
+        <button label="&#127868; NIGHT">0x30CF</button>
+
+    </device>
+</irplus>

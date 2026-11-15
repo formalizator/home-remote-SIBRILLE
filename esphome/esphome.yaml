@@ -1,0 +1,100 @@
+remote_transmitter:
+  pin: GPIO4 # Замените на пин вашего ИК-диода
+  carrier_duty_percent: 33%
+
+button:
+  - platform: template
+    name: "Sibrille Lamp Power"
+    icon: "mdi:power"
+    on_press:
+      - remote_transmitter.transmit_nec:
+          address: 0x22DD
+          command: 0x11
+
+  - platform: template
+    name: "Sibrille Sleep Timer 15m"
+    icon: "mdi:timer-outline"
+    on_press:
+      - remote_transmitter.transmit_nec:
+          address: 0x22DD
+          command: 0x1D
+
+  - platform: template
+    name: "Sibrille Max Brightness (100%, CCT 3/5 Neutral White)"
+    icon: "mdi:brightness-7"
+    on_press:
+      - remote_transmitter.transmit_nec:
+          address: 0x22DD
+          command: 0x03
+
+  - platform: template
+    name: "Sibrille Brightness Up (+0.5/5 per press; 2 presses = 1/5 step)"
+    icon: "mdi:brightness-up"
+    on_press:
+      - remote_transmitter.transmit_nec:
+          address: 0x22DD
+          command: 0x18
+
+  - platform: template
+    name: "Sibrille Brightness Down (-0.5/5 per press; 2 presses = 1/5 step)"
+    icon: "mdi:brightness-down"
+    on_press:
+      - remote_transmitter.transmit_nec:
+          address: 0x22DD
+          command: 0x1F
+
+  - platform: template
+    name: "Sibrille CCT Cooler (+0.5/5 per press; 2 presses = 1/5 step)"
+    icon: "mdi:snowflake"
+    on_press:
+      - remote_transmitter.transmit_nec:
+          address: 0x22DD
+          command: 0x07
+
+  - platform: template
+    name: "Sibrille CCT Warmer (-0.5/5 per press; 2 presses = 1/5 step)"
+    icon: "mdi:fire"
+    on_press:
+      - remote_transmitter.transmit_nec:
+          address: 0x22DD
+          command: 0x0F
+
+  - platform: template
+    name: "Sibrille Preset Daylight"
+    icon: "mdi:white-balance-sunny"
+    on_press:
+      - remote_transmitter.transmit_nec:
+          address: 0x22DD
+          command: 0x19
+
+  - platform: template
+    name: "Sibrille Preset Work"
+    icon: "mdi:laptop"
+    on_press:
+      - remote_transmitter.transmit_nec:
+          address: 0x22DD
+          command: 0x16
+
+  - platform: template
+    name: "Sibrille Preset Relax"
+    icon: "mdi:coffee"
+    on_press:
+      - remote_transmitter.transmit_nec:
+          address: 0x22DD
+          command: 0x12
+
+  - platform: template
+    name: "Sibrille Preset Warm Medium"
+    icon: "mdi:book-open-page-variant"
+    on_press:
+      - remote_transmitter.transmit_nec:
+          address: 0x22DD
+          command: 0x0A
+
+  - platform: template
+    name: "Sibrille Preset Nightlight (Bottle)"
+    icon: "mdi:baby-bottle-outline"
+    on_press:
+      - remote_transmitter.transmit_nec:
+          address: 0x22DD
+          command: 0x0C
