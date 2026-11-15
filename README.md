@@ -1,9 +1,45 @@
 # SIBRILLE Double Head LED Desk Lamp - IR Remote Protocol Specification
 
-This repository contains the reverse-engineered infrared (IR) protocol specification, clean payload codes, and integration configurations for the **SIBRILLE Double Head LED Desk Lamp** (OEM Series: Yusing Lighting `YS-TL...` / models `MF31037`, `MF30021`).
-
+This repository contains the reverse-engineered infrared (IR) protocol specification, raw and normalized command payloads, and practical integration files for the **SIBRILLE Double Head LED Desk Lamp** (OEM Series: Yusing Lighting `YS-TL...` / models `MF31037`, `MF30021`).
 
 > [!CAUTION]
+> This IR protocol and command set were reverse-engineered and verified exclusively on a standard white light (non-RGB, CCT-adjustable) lamp model featuring a distinct black convex dome (IR receiver) on the underside directly beneath the touch buttons. These codes have not been tested on other hardware revisions, RGB variants, or lamp models; compatibility with different versions is not guaranteed.
+
+
+## Repository File Structure
+
+The workspace is organized as follows:
+
+```text
+.
+├── README.md                                   # Protocol specification and usage guide
+├── LICENSE                                     # Open-source license for the project
+├── BroadlinkSibrilleIrHeadlamp.py              # Python CLI to send NEC codes through Broadlink devices
+├── raw_codes/
+│   └── pronto_codes.csv                       # Raw Pronto/NEC payload catalog for all verified commands
+├── android_irplus/
+│   └── SIBRILLE_Desk_Lamp.irplus              # Android IRPlus definition file for direct import
+├── flipper_zero/
+│   └── SIBRILLE_Desk_Lamp.ir                  # Flipper Zero IR capture/import file
+├── home_assistant/
+│   └── configuration.yaml                     # Home Assistant script and template-light examples
+├── esphome/
+│   └── esphome.yaml                           # ESPHome IR transmitter examples for a GPIO-connected LED
+├── etc/
+│   └── lirc/
+│       └── lircd.conf.d/
+│           └── sibrille.lircd.conf            # Linux LIRC remote definition compatible with `lircd`
+├── custom_components/
+│   └── smartir/
+│       └── codes/
+│           └── light/
+│               └── 7144.json                  # SmartIR light profile for the lamp
+└── ...
+```
+
+The files above cover both the protocol documentation and ready-made integrations for Broadlink, Home Assistant, ESPHome, Linux LIRC, IRPlus, and Flipper Zero.
+
+> [!WARNING]
 > This IR protocol and command set were reverse-engineered and verified exclusively on a standard white light (non-RGB, CCT-adjustable) lamp model featuring a distinct black convex dome (IR receiver) on the underside directly beneath the touch buttons. These codes have not been tested on other hardware revisions, RGB variants, or lamp models; compatibility with different versions is not guaranteed.
 
 ---
@@ -235,5 +271,105 @@ For technical details regarding infrared decoding, pulse train analysis, and cap
 * **Remote Central - Pronto Edit Hex Format Specification:**  
   http://www.remotecentral.com/features/irdisp1.htm  
   *Standard manual for raw sampled burst pairs (`0000 006D ...`) across universal programmable remotes.*
-  <http://www.remotecentral.com/features/irdisp1.htm>  
-  *Standard manual for raw sampled burst pairs (`0000 006D ...`) across universal programmable remotes.*
+
+---
+
+## 8. Project Files and Their Purpose
+
+This project includes multiple target formats so the same NEC protocol can be reused across different ecosystems:
+
+```text
+README.md
+  Project documentation and protocol specification.
+
+BroadlinkSibrilleIrHeadlamp.py
+  Python CLI for sending commands to Broadlink RM3/RM4 devices.
+
+raw_codes/pronto_codes.csv
+  Raw code table in Pronto-style notation for verification and import.
+
+android_irplus/SIBRILLE_Desk_Lamp.irplus
+  Android IRPlus compatible remote definition file.
+
+flipper_zero/SIBRILLE_Desk_Lamp.ir
+  Flipper Zero import file for testing and IR replay.
+
+home_assistant/configuration.yaml
+  Home Assistant scripts and template light entity examples.
+
+esphome/esphome.yaml
+  ESPHome remote transmitter example for GPIO-driven IR LED output.
+
+etc/lirc/lircd.conf.d/sibrille.lircd.conf
+  LIRC remote definition for Linux-based IR control stacks.
+
+custom_components/smartir/codes/light/7144.json
+  SmartIR profile metadata and base64 command payloads.
+
+LICENSE
+  MIT license for the repository contents.
+```
+
+The intent is to provide both the raw protocol truth and practical integration examples for repeatable, real-world automation.
+
+---
+
+## 9. Quick Start: Broadlink CLI Usage
+
+The included Python script can be used directly without any other integration layer.
+
+```bash
+# Show the interactive menu and send commands manually
+python BroadlinkSibrilleIrHeadlamp.py
+
+# Send a named command (example: power toggle)
+python BroadlinkSibrilleIrHeadlamp.py --cmd power
+
+# Send the sleep timer command in dry-run mode (prints payload only)
+python BroadlinkSibrilleIrHeadlamp.py --cmd timer --dry-run
+
+# Send a custom NEC command if needed
+python BroadlinkSibrilleIrHeadlamp.py --custom 0x1A
+```
+
+Common supported names include:
+
+- `power`
+- `timer`
+- `max`
+- `bright_up`
+- `bright_dn`
+- `cct_cool`
+- `cct_warm`
+- `daylight`
+- `work`
+- `relax`
+- `warm_mid`
+- `nightlight`
+
+The script prints base64 and raw payload data and supports Broadlink discovery over the local network.
+
+---
+
+## 10. Troubleshooting and Compatibility Notes
+
+* The protocol and codes in this repository were verified on the standard white CCT-adjustable model only.
+* The distinct black convex dome on the underside of the lamp is a strong marker of the tested hardware revision.
+* RGB variants, alternative power boards, or other OEM revisions may not use the same NEC commands.
+* If a device does not respond, verify:
+  * the IR LED is connected to the expected GPIO or emitter pin,
+  * the emitter is oriented correctly and has adequate optical output,
+  * the Broadlink device is on the same network and authenticated,
+  * the NEC frame is not being sent with the wrong address or carrier frequency.
+* The protocol uses a 38 kHz carrier and standard NEC LSB-first framing. If timing is off by more than a few percent, commands may fail intermittently.
+* For the sleep timer logic, repeated presses are interpreted as toggle state changes rather than a repeated action while the 2-blink / 3-blink animation is active.
+
+---
+
+## 11. License and Attribution
+
+This repository is distributed under the MIT License. See [LICENSE](LICENSE) for the full text.
+
+The project documents a reverse-engineered IR protocol and command set for a consumer desk lamp. It is intended for hobbyist, home automation, and interoperability use, and it is provided as-is without warranty.
+
+If you adapt the commands for another system, prefer to preserve the verified NEC address (`0x22DD`) and confirm the exact hardware revision before using the payloads on a different lamp model.
