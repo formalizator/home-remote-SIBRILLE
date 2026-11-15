@@ -125,11 +125,11 @@ Because different ecosystems encode the same on-air bit stream using different b
 
 | ID | CLI Key (`--cmd`) | Flipper Zero `name` | LIRC Key Name | NEC Cmd (`C`) | NEC Inv (`~C`) | LIRC / IRPlus 16-bit Code (MSB-Reflected) |
 | :---: | :--- | :--- | :--- | :---: | :---: | :---: |
-| `01` | `power` | `Power` | `KEY_POWER` | `0x11` | `0xEE` | `0x8877` |
-| `02` | `bright_up` | `Bright_Up` | `KEY_BRIGHTNESSUP` | `0x18` | `0xE7` | `0x18E7` |
-| `03` | `bright_dn` | `Bright_Down` | `KEY_BRIGHTNESSDOWN` | `0x1F` | `0xE0` | `0xF807` |
-| `04` | `cct_cool` | `CCT_Cooler` | `KEY_COOLER` | `0x07` | `0xF8` | `0xE01F` |
-| `05` | `cct_warm` | `CCT_Warmer` | `KEY_WARMER` | `0x0F` | `0xF0` | `0xF00F` |
+| `01` | `power` | `Power_on` / `Power_off` | `KEY_POWER` | `0x11` | `0xEE` | `0x8877` |
+| `02` | `bright_up` | `Brightness_up` | `KEY_BRIGHTNESSUP` | `0x18` | `0xE7` | `0x18E7` |
+| `03` | `bright_dn` | `Brightness_dn` | `KEY_BRIGHTNESSDOWN` | `0x1F` | `0xE0` | `0xF807` |
+| `04` | `cct_cool` | `White` | `KEY_COOLER` | `0x07` | `0xF8` | `0xE01F` |
+| `05` | `cct_warm` | `Yellow` | `KEY_WARMER` | `0x0F` | `0xF0` | `0xF00F` |
 | `06` | `max` | `Max_100pct` | `KEY_BRIGHTNESS_MAX` | `0x03` | `0xFC` | `0xC03F` |
 | `07` | `daylight` | `Daylight_Mode` | `KEY_MODE_DAYLIGHT` | `0x19` | `0xE6` | `0x9867` |
 | `08` | `work` | `Work_Mode` | `KEY_MODE_WORK` | `0x16` | `0xE9` | `0x6897` |
@@ -387,7 +387,13 @@ Version: 1
 # 
 # SIBRILLE Double Head LED Desk Lamp (NEC 0x22DD)
 # 
-name: Power
+name: Power_on
+type: parsed
+protocol: NEC
+address: 22 DD 00 00
+command: 11 00 00 00
+# 
+name: Power_off
 type: parsed
 protocol: NEC
 address: 22 DD 00 00
@@ -397,6 +403,7 @@ command: 11 00 00 00
 * `type: parsed` + `protocol: NEC` instructs Flipper Zero's Infrared firmware to synthesize the 38 kHz NEC frame timing natively rather than storing raw pulse durations.
 * `address: 22 DD 00 00` stores the 16-bit address (`0x22`, `0xDD`) padded to 4 space-separated bytes (`00 00`).
 * `command: 11 00 00 00` stores the 8-bit command byte (`0x11`) padded to 4 bytes; Flipper Zero automatically computes and transmits the inverted byte (`0xEE`) on air.
+* The standard buttons follow the Flipper-IRDB `LEDs` naming convention (`Power_on`, `Power_off`, `Brightness_up`, `Brightness_dn`, `White`, `Yellow`), where both `Power_on` and `Power_off` map to the toggle command `11 00 00 00` so universal remote assets can trigger either action consistently.
 
 ### 5.7 SmartIR JSON Profile Structure (`custom_components/smartir/codes/light/7144.json`)
 
@@ -594,7 +601,7 @@ Choose any platform below depending on the hardware you own. In all cases, ensur
   1. Connect your Flipper Zero via USB (with qFlipper) or mount its microSD card.
   2. Copy [flipper_zero/SIBRILLE_Desk_Lamp.ir](flipper_zero/SIBRILLE_Desk_Lamp.ir) to `/ext/infrared/SIBRILLE_Desk_Lamp.ir` (`SD Card/infrared/SIBRILLE_Desk_Lamp.ir`).
   3. On the Flipper Zero, press **OK** $\to$ **Infrared** $\to$ **Saved Remotes** $\to$ **SIBRILLE_Desk_Lamp**.
-  4. Point the Flipper Zero at the lamp and press **OK** on any of the 12 commands (`Power`, `Timer_15m`, `Night_Light`, etc.) to transmit.
+  4. Point the Flipper Zero at the lamp and press **OK** on any of the 13 commands (`Power_on`, `Power_off`, `Brightness_up`, `Brightness_dn`, `White`, `Yellow`, `Timer_15m`, `Night_Light`, etc.) to transmit.
 
 ### 7.4 Home Assistant — Native YAML Configuration (`home_assistant/configuration.yaml`)
 
