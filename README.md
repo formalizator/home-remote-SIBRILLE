@@ -67,7 +67,7 @@ The table below describes all 12 functions available on the lamp microcontroller
 | `03` | `0x1F` | `0xE0` | **Brightness Down** | Stepwise decreases luminous flux (down to level 1/5). | `BRIGHT -` / 🔅 |
 | `04` | `0x07` | `0xF8` | **CCT Cool** | Stepwise shifts color temperature toward cool white (~6500 K). | `CCT +` / `COLD` |
 | `05` | `0x0F` | `0xF0` | **CCT Warm** | Stepwise shifts color temperature toward warm white (~2700 K). | `CCT -` / `WARM` |
-| `06` | `0x03` | `0xFC` | **Max Brightness** | Absolute preset: Sets brightness to 100% (5/5) preserving current CCT. | `100%` / `MAX` |
+| `06` | `0x03` | `0xFC` | **Max Brightness** | Absolute preset: Sets brightness to 100% (5/5) Medium White (CCT 3/5). | `100%` / `MAX` |
 | `07` | `0x19` | `0xE6` | **Daylight Mode** | Absolute preset: Cool White (5/5, ~6500 K) at Maximum Brightness (5/5). | `DAYLIGHT` / `SUN` |
 | `08` | `0x16` | `0xE9` | **Reading / Work** | Absolute preset: Neutral Cool White (~5000 K) at Maximum Brightness (5/5). | `READING` / `WORK` |
 | `09` | `0x12` | `0xED` | **Relax / Warm Bright** | Absolute preset: Warm White (~2700 K) at High Brightness (4/5). | `RELAX` / `COFFEE` |
@@ -134,7 +134,7 @@ All packets represent clean, mathematical pulse sequences sampled for a 38 kHz c
       "broadlink_base64": "JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxI3EhISNxI3EjcSEhISEhISEhI3EhISEhISEjcSNxI3EgAFHg==",
       "pronto_hex": "0000 006D 0022 0000 0156 00AB 0015 0015 0015 0040 0015 0015 0015 0015 0015 0015 0015 0040 0015 0015 0015 0015 0015 0040 0015 0015 0015 0040 0015 0040 0015 0040 0015 0015 0015 0040 0015 0040 0015 0040 0015 0015 0015 0040 0015 0040 0015 0040 0015 0015 0015 0015 0015 0015 0015 0015 0015 0040 0015 0015 0015 0015 0015 0015 0015 0040 0015 0040 0015 0040 0015 05F0"
     },
-    "max_brightness": {
+    "max_brightness_cct_mid": {
       "hex": "0x03",
       "broadlink_base64": "JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxI3EjcSEhISEhISEhISEhISEhISEjcSNxI3EjcSNxI3EgAFHg==",
       "pronto_hex": "0000 006D 0022 0000 0156 00AB 0015 0015 0015 0040 0015 0015 0015 0015 0015 0015 0015 0040 0015 0015 0015 0015 0015 0040 0015 0015 0015 0040 0015 0040 0015 0040 0015 0015 0015 0040 0015 0040 0015 0040 0015 0040 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0040 0015 0040 0015 0040 0015 0040 0015 0040 0015 0040 0015 05F0"
