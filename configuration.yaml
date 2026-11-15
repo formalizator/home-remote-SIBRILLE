@@ -33,7 +33,7 @@ script:
           command: "b64:JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxI3EhISNxI3EjcSEhISEhISEhI3EhISEhISEjcSNxI3EgAFHg=="
 
   sibrille_lamp_max_brightness:
-    alias: "SIBRILLE: Max Brightness 100% CCT Mid"
+    alias: "SIBRILLE: Max Brightness (100%, CCT 3/5 Neutral White)"
     icon: mdi:brightness-7
     sequence:
       - service: remote.send_command

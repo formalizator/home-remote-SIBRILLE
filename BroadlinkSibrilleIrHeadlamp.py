@@ -82,7 +82,7 @@ class CommandSpec:
 COMMANDS: tuple[CommandSpec, ...] = (
     CommandSpec("1",  "power",      0x11, "Power Toggle (ON/OFF)",        "Toggles main lamp power state"),
     CommandSpec("2",  "timer",      0x1D, "Sleep Timer 15m (Toggle)",     "Odd click: 2 blinks (15m ON) | Even click: 3 blinks (OFF)"),
-    CommandSpec("3",  "max",        0x03, "Max Brightness (100%)",        "Sets brightness to 5/5, CCT 3/5 (Neutral White)"),
+    CommandSpec("3",  "max",        0x03, "Max Brightness (100%)",        "Sets brightness to 5/5 (100%), CCT 3/5 (Neutral White)"),
     CommandSpec("4",  "bright_up",  0x18, "Brightness Up (+)",            "Stepwise increases brightness up to 5/5"),
     CommandSpec("5",  "bright_dn",  0x1F, "Brightness Down (-)",          "Stepwise decreases brightness down to 1/5"),
     CommandSpec("6",  "cct_cool",   0x07, "CCT Cooler (+)",               "Stepwise shifts light toward cool white (5/5)"),
