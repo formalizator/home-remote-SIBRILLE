@@ -28,7 +28,7 @@ button:
           command: 0x03
 
   - platform: template
-    name: "Sibrille Brightness Up"
+    name: "Sibrille Brightness Up (+0.5/5 per press; 2 presses = 1/5 step)"
     icon: "mdi:brightness-up"
     on_press:
       - remote_transmitter.transmit_nec:
@@ -36,7 +36,7 @@ button:
           command: 0x18
 
   - platform: template
-    name: "Sibrille Brightness Down"
+    name: "Sibrille Brightness Down (-0.5/5 per press; 2 presses = 1/5 step)"
     icon: "mdi:brightness-down"
     on_press:
       - remote_transmitter.transmit_nec:
@@ -44,7 +44,7 @@ button:
           command: 0x1F
 
   - platform: template
-    name: "Sibrille CCT Cooler"
+    name: "Sibrille CCT Cooler (+0.5/5 per press; 2 presses = 1/5 step)"
     icon: "mdi:snowflake"
     on_press:
       - remote_transmitter.transmit_nec:
@@ -52,7 +52,7 @@ button:
           command: 0x07
 
   - platform: template
-    name: "Sibrille CCT Warmer"
+    name: "Sibrille CCT Warmer (-0.5/5 per press; 2 presses = 1/5 step)"
     icon: "mdi:fire"
     on_press:
       - remote_transmitter.transmit_nec:

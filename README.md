@@ -63,10 +63,10 @@ The table below describes all 12 functions available on the lamp microcontroller
 | ID | Command | Inverted | Function Name | Visual Feedback & Operational Behavior | Remote Legend / Icon |
 | :---: | :---: | :---: | :--- | :--- | :---: |
 | `01` | `0x11` | `0xEE` | **Power Toggle** | Toggles main light between ON and OFF. | `POWER` / `ON/OFF` |
-| `02` | `0x18` | `0xE7` | **Brightness Up** | Stepwise increases luminous flux (5 discrete steps up to 100%). | `BRIGHT +` / 🔆 |
-| `03` | `0x1F` | `0xE0` | **Brightness Down** | Stepwise decreases luminous flux (down to level 1/5). | `BRIGHT -` / 🔅 |
-| `04` | `0x07` | `0xF8` | **CCT Cool** | Stepwise shifts color temperature toward cool white (~6500 K). | `CCT +` / `COLD` |
-| `05` | `0x0F` | `0xF0` | **CCT Warm** | Stepwise shifts color temperature toward warm white (~2700 K). | `CCT -` / `WARM` |
+| `02` | `0x18` | `0xE7` | **Brightness Up** | Each press increases brightness by 0.5/5; two presses make one full 1/5 step, up to 5/5 (100%). | `BRIGHT +` / 🔆 |
+| `03` | `0x1F` | `0xE0` | **Brightness Down** | Each press decreases brightness by 0.5/5; two presses make one full 1/5 step, down to 1/5. | `BRIGHT -` / 🔅 |
+| `04` | `0x07` | `0xF8` | **CCT Cool** | Each press shifts CCT by 0.5/5 toward cool white (~6500 K); two presses make one full 1/5 step, up to 5/5. | `CCT +` / `COLD` |
+| `05` | `0x0F` | `0xF0` | **CCT Warm** | Each press shifts CCT by 0.5/5 toward warm white (~2700 K); two presses make one full 1/5 step, down to 1/5. | `CCT -` / `WARM` |
 | `06` | `0x03` | `0xFC` | **Max Brightness** | Sets brightness to 5/5 (100%), CCT 3/5 (Neutral White). | `100%` / `MAX` |
 | `07` | `0x19` | `0xE6` | **Daylight Mode** | Absolute preset: Cool White (5/5, ~6500 K) at Maximum Brightness (5/5). | `DAYLIGHT` / `SUN` |
 | `08` | `0x16` | `0xE9` | **Reading / Work** | Absolute preset: Neutral Cool White (~5000 K) at Maximum Brightness (5/5). | `READING` / `WORK` |

@@ -44,7 +44,7 @@ script:
 
   # --- Step Adjustments ---
   sibrille_lamp_bright_up:
-    alias: "SIBRILLE: Brightness Up"
+    alias: "SIBRILLE: Brightness Up (+0.5/5 per press; 2 presses = 1/5 step)"
     icon: mdi:brightness-up
     sequence:
       - service: remote.send_command
@@ -54,7 +54,7 @@ script:
           command: "b64:JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxISEhISEhI3EjcSEhISEhISNxI3EjcSEhISEjcSNxI3EgAFHg=="
 
   sibrille_lamp_bright_down:
-    alias: "SIBRILLE: Brightness Down"
+    alias: "SIBRILLE: Brightness Down (-0.5/5 per press; 2 presses = 1/5 step)"
     icon: mdi:brightness-down
     sequence:
       - service: remote.send_command
@@ -64,7 +64,7 @@ script:
           command: "b64:JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxI3EjcSNxI3EjcSEhISEhISEhISEhISEhISEjcSNxI3EgAFHg=="
 
   sibrille_lamp_cct_cooler:
-    alias: "SIBRILLE: CCT Cooler"
+    alias: "SIBRILLE: CCT Cooler (+0.5/5 per press; 2 presses = 1/5 step)"
     icon: mdi:snowflake
     sequence:
       - service: remote.send_command
@@ -74,7 +74,7 @@ script:
           command: "b64:JgBIAAABJ5MSEhI3EhISEhISEjcSEhISEjcSEhI3EjcSNxISEjcSNxI3EjcSNxISEhISEhISEhISEhISEhISNxI3EjcSNxI3EgAFHg=="
 
   sibrille_lamp_cct_warmer:
-    alias: "SIBRILLE: CCT Warmer"
+    alias: "SIBRILLE: CCT Warmer (-0.5/5 per press; 2 presses = 1/5 step)"
     icon: mdi:fire
     sequence:
       - service: remote.send_command
